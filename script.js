@@ -1,5 +1,11 @@
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+const shortestAngleDiff = (from, to) => ((to - from + 540) % 360) - 180;
+
+const heroPastOffset = () => window.innerHeight * 0.8;
+
 const setDelay = (element) => {
   const delay = element.dataset.revealDelay;
 
@@ -19,8 +25,12 @@ const initHeroReveal = () => {
   });
 };
 
-const initScrollReveal = () => {
-  const revealElements = document.querySelectorAll("[data-reveal]");
+const initFooterReveal = () => {
+  const revealElements = document.querySelectorAll(".footer [data-reveal]");
+
+  if (revealElements.length === 0) {
+    return;
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -44,16 +54,79 @@ const initScrollReveal = () => {
   });
 };
 
-const initMotion = () => {
-  if (prefersReducedMotion.matches) {
-    document
-      .querySelectorAll("[data-reveal], [data-hero-reveal]")
-      .forEach((element) => element.classList.add("is-visible"));
+const initSpineMotion = () => {
+  const track = document.querySelector(".spine__track");
+  const scene = document.querySelector(".spine__scene");
+  const nodes = Array.from(document.querySelectorAll(".node"));
+
+  if (!track || !scene || nodes.length === 0) {
     return;
   }
 
+  const updatePastHero = () => {
+    document.body.classList.toggle("is-past-hero", window.scrollY > heroPastOffset());
+  };
+
+  if (prefersReducedMotion.matches) {
+    updatePastHero();
+    return;
+  }
+
+  const totalRotation = 270;
+  let ticking = false;
+
+  const updateScene = () => {
+    const vh = window.innerHeight;
+    const trackTop = track.offsetTop;
+    const trackHeight = track.offsetHeight;
+    const scrollY = window.scrollY;
+    const p = clamp((scrollY - trackTop) / (trackHeight - vh), 0, 1);
+    const rotation = p * totalRotation;
+
+    scene.style.transform = `translateY(${(p - 0.5) * 60}px) rotateY(${rotation}deg)`;
+
+    nodes.forEach((node) => {
+      const nodeAngle = Number(node.dataset.angle) || 0;
+      const delta = shortestAngleDiff(nodeAngle, -rotation);
+      const opacity = Math.max(0, 1 - Math.abs(delta) / 100);
+      const scale = 0.92 + 0.08 * (1 - Math.min(1, Math.abs(delta) / 100));
+
+      node.style.setProperty("--node-angle", `${nodeAngle}deg`);
+      node.style.setProperty("--node-fade", opacity.toFixed(3));
+      node.style.setProperty("--node-scale", scale.toFixed(3));
+    });
+
+    updatePastHero();
+    ticking = false;
+  };
+
+  const requestTick = () => {
+    if (ticking) {
+      return;
+    }
+
+    ticking = true;
+    window.requestAnimationFrame(updateScene);
+  };
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick);
+  requestTick();
+};
+
+const initMotion = () => {
   initHeroReveal();
-  initScrollReveal();
+
+  if (prefersReducedMotion.matches) {
+    document.querySelectorAll(".footer [data-reveal]").forEach((element) => {
+      element.classList.add("is-visible");
+    });
+    initSpineMotion();
+    return;
+  }
+
+  initFooterReveal();
+  initSpineMotion();
 };
 
 if (document.readyState === "loading") {
