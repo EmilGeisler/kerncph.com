@@ -24,109 +24,80 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <div class="sphere" aria-hidden="true"></div>
+
     <header class="hero">
       <div class="container hero__inner">
-        <div class="hero__brand" data-hero-reveal data-reveal-delay="280">
+        <div class="hero__brand">
           <img src="kern-cph-white-logo.svg" alt="KERN CPH" class="brand-logo brand-logo--hero">
         </div>
         <div class="hero__content">
-          <h1 class="hero__title" data-hero-reveal>
-            Design reduced to what matters.
-          </h1>
-          <p class="hero__subtitle" data-hero-reveal data-reveal-delay="140">
+          <h1 class="hero__title">Design reduced to what matters.</h1>
+          <p class="hero__subtitle">
             Scandinavian objects shaped by simplicity, function and quiet character.
           </p>
         </div>
-        <p class="hero__scroll" data-hero-reveal data-reveal-delay="420">Scroll</p>
       </div>
     </header>
 
     <main>
-      <div class="spine__track">
-        <div class="spine__stage">
-          <div class="spine__line" aria-hidden="true"></div>
-          <div class="spine__scene">
-            <article class="node" data-angle="0" aria-labelledby="meaning-title">
-              <div class="node__panel">
-                <p class="section__label">01 — Meaning</p>
-                <div class="section__body section__body--meaning">
-                  <h2 class="section__headline" id="meaning-title">
-                    KERN comes from the Danish word
-                    <span class="emphasis-word emphasis-word--underlined">kerne</span>,
-                    meaning
-                    <span class="emphasis-word">core</span>.
-                  </h2>
-                  <p class="section__text">
-                    For us, it represents a return to what matters.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="node" data-angle="90" aria-labelledby="story-title">
-              <div class="node__panel">
-                <p class="section__label">02 — Story</p>
-                <div class="section__body">
-                  <h2 class="section__headline" id="story-title">
-                    KERN began with two childhood friends and a shared frustration with a world that often makes things more complicated than they need to be.
-                  </h2>
-                  <p class="section__text">
-                    In design, as in life, we are drawn to what feels honest, useful and considered. The simple things. The objects you reach for every day. The pieces that do not demand attention, but quietly improve the way you live.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="node" data-angle="180" aria-labelledby="philosophy-title">
-              <div class="node__panel">
-                <p class="section__label">03 — Philosophy</p>
-                <div class="section__body">
-                  <h2 class="section__headline" id="philosophy-title">
-                    We create objects reduced to what matters: form, function, material and feeling.
-                  </h2>
-                  <p class="section__text">
-                    Nothing is added without purpose, and nothing is removed if it gives the object character.
-                  </p>
-                  <p class="section__text">
-                    At KERN, we do not believe in reinventing the plate. We believe in returning to the core of what makes an object worth living with, then giving it our own edge.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="node" data-angle="270" aria-labelledby="closing-title">
-              <div class="node__panel">
-                <p class="section__label">04 — Core &amp; Edge</p>
-                <div class="section__body">
-                  <h2 class="section__headline" id="closing-title">
-                    To us, simplicity is not about being plain. It is about precision.
-                  </h2>
-                  <p class="section__text">
-                    A good object should feel calm, but never anonymous. Functional, but never without character.
-                  </p>
-                  <p class="section__text">
-                    That is the balance KERN is built on.
-                  </p>
-                  <div class="closing-stanza" aria-label="The core gives an object purpose. The edge gives it life.">
-                    <p class="closing-stanza__line">
-                      The
-                      <span class="emphasis-word">core</span>
-                      gives an object
-                      <span class="emphasis-word">purpose</span>.
-                    </p>
-                    <p class="closing-stanza__line">
-                      The
-                      <span class="emphasis-word">edge</span>
-                      gives it
-                      <span class="emphasis-word">life</span>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
+      <section class="story-section story-section--meaning" aria-labelledby="meaning-title">
+        <div class="container story-section__inner">
+          <p class="section__label">01 — Meaning</p>
+          <div class="section__body section__body--meaning">
+            <h2 class="section__headline" id="meaning-title">
+              KERN comes from the Danish word
+              <span class="emphasis-word emphasis-word--underlined">kerne</span>,
+              meaning
+              <span class="emphasis-word">core</span>.
+            </h2>
+            <p class="section__text">
+              For us, it represents a return to what matters.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="story-section" aria-labelledby="story-title">
+        <div class="container story-section__inner">
+          <p class="section__label">02 — Story</p>
+          <div class="section__body">
+            <h2 class="section__headline" id="story-title">
+              KERN began with two childhood friends and a shared frustration with a world that often makes things more complicated than they need to be.
+            </h2>
+            <p class="section__text">
+              In design, as in life, we are drawn to what feels honest, useful and considered. The simple things. The objects you reach for every day. The pieces that do not demand attention, but quietly improve the way you live.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section" aria-labelledby="philosophy-title">
+        <div class="container story-section__inner">
+          <p class="section__label">03 — Philosophy</p>
+          <div class="section__body">
+            <h2 class="section__headline" id="philosophy-title">
+              We create objects reduced to what matters: form, function, material and feeling.
+            </h2>
+            <p class="section__text">
+              Nothing is added without purpose, and nothing is removed if it gives the object character.
+            </p>
+            <p class="section__text">
+              At KERN, we do not believe in reinventing the plate. We believe in returning to the core of what makes an object worth living with, then giving it our own edge.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="identity" id="identity-1">
+        <div class="identity__copy">
+          <p>To us, simplicity is not about being plain. It is about precision.</p>
+          <p>A good object should feel calm, but never anonymous. Functional, but never without character.</p>
+          <p>That is the balance KERN is built on.</p>
+          <p class="identity__line">The <em>core</em> gives an object <em>purpose</em>.</p>
+          <p class="identity__line">The <em>edge</em> gives it <em>life</em>.</p>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
