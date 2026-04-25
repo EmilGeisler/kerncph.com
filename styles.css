@@ -13,7 +13,7 @@
   --section-title-size: clamp(2.35rem, 5.5vw, 4.85rem);
   --body-size: clamp(1.05rem, 1.2vw, 1.2rem);
   --label-size: 0.74rem;
-  --node-radius: clamp(280px, 32vw, 460px);
+  --node-radius: clamp(200px, 22vw, 320px);
   --transition-standard: 1100ms cubic-bezier(.2, .7, .2, 1);
   --transition-strong: 1400ms cubic-bezier(.2, .7, .2, 1);
 }
@@ -147,7 +147,7 @@ main {
   position: sticky;
   top: 0;
   height: 100vh;
-  perspective: 1400px;
+  perspective: 2200px;
   overflow: hidden;
 }
 
@@ -173,8 +173,12 @@ main {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(40rem, 88vw);
-  max-height: 88vh;
+  width: min(34rem, 84vw);
+  max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   transform-origin: 0 50% 0;
   transform:
     translate3d(-50%, -50%, 0)
@@ -190,14 +194,26 @@ main {
   padding: 0 clamp(0.5rem, 2vw, 1.5rem);
 }
 
-.node .section__headline {
-  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
-  line-height: 1.2;
+.node .section__body,
+.node .section__body--meaning {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .node .section__text {
-  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
-  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.node .section__headline {
+  font-size: clamp(1.25rem, 2.1vw, 1.95rem);
+  line-height: 1.25;
+}
+
+.node .section__text {
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  margin-top: 0.9rem;
+  line-height: 1.55;
 }
 
 .node .section__label {
@@ -209,7 +225,7 @@ main {
 }
 
 .node .closing-stanza__line {
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
 }
 
 .node .emphasis-word {

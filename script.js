@@ -25,35 +25,6 @@ const initHeroReveal = () => {
   });
 };
 
-const initFooterReveal = () => {
-  const revealElements = document.querySelectorAll(".footer [data-reveal]");
-
-  if (revealElements.length === 0) {
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        showElement(entry.target);
-        observer.unobserve(entry.target);
-      });
-    },
-    {
-      threshold: 0.15
-    }
-  );
-
-  revealElements.forEach((element) => {
-    setDelay(element);
-    observer.observe(element);
-  });
-};
-
 const initSpineMotion = () => {
   const track = document.querySelector(".spine__track");
   const scene = document.querySelector(".spine__scene");
@@ -114,16 +85,6 @@ const initSpineMotion = () => {
 
 const initMotion = () => {
   initHeroReveal();
-
-  if (prefersReducedMotion.matches) {
-    document.querySelectorAll(".footer [data-reveal]").forEach((element) => {
-      element.classList.add("is-visible");
-    });
-    initSpineMotion();
-    return;
-  }
-
-  initFooterReveal();
   initSpineMotion();
 };
 
