@@ -89,11 +89,9 @@ const initSpineMotion = () => {
       const nodeAngle = Number(node.dataset.angle) || 0;
       const delta = shortestAngleDiff(nodeAngle, -rotation);
       const opacity = Math.max(0, 1 - Math.abs(delta) / 100);
-      const scale = 0.92 + 0.08 * (1 - Math.min(1, Math.abs(delta) / 100));
 
       node.style.setProperty("--node-angle", `${nodeAngle}deg`);
       node.style.setProperty("--node-fade", opacity.toFixed(3));
-      node.style.setProperty("--node-scale", scale.toFixed(3));
     });
 
     updatePastHero();

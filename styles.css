@@ -173,22 +173,47 @@ main {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(36rem, 80vw);
+  width: min(40rem, 88vw);
+  max-height: 88vh;
   transform-origin: 0 50% 0;
   transform:
     translate3d(-50%, -50%, 0)
     rotateY(var(--node-angle))
-    translateZ(var(--node-radius))
-    scale(var(--node-scale, 0.95));
+    translateZ(var(--node-radius));
   opacity: var(--node-fade, 0);
   backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 .node__panel {
-  padding: clamp(2rem, 4vw, 3rem);
-  background: linear-gradient(180deg, rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.42));
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  backdrop-filter: blur(10px);
+  padding: 0 clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.node .section__headline {
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.node .section__text {
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  margin-top: 1rem;
+}
+
+.node .section__label {
+  margin-bottom: 1rem;
+}
+
+.node .closing-stanza {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.node .closing-stanza__line {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+}
+
+.node .emphasis-word {
+  font-size: 1.05em;
 }
 
 .section__label {
